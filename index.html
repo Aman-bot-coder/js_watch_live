@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style> 
+    *{
+        margin: 0;
+        padding: 0;
+        background-color: black;
+    }
+    .container{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+
+    }
+    .container h1{
+        color: white;
+        align-items: center;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="clock">01:00AM</h1>
+    </div>
+    <script>
+        function getTime(){
+            let d = new Date();
+            console.log(d);
+            let h = d.getHours();
+            let amPm= h>12?`PM`:`PM`;
+            h = h%12;
+            h = h==0?12:h;
+            let m = d.getMinutes();
+            m=m>9?m:`0`+m;
+            let s = d.getSeconds();
+            s=s>9?s:`0`+s;
+            return `${h}:${m}:${s}:${amPm}`;
+        }
+        setInterval(()=>{
+            let cb = document.querySelector('#clock');
+            cb.innerHTML = getTime();
+
+
+        },1000);
+    </script>
+</body>
+</html>
